@@ -10,29 +10,31 @@ public class RemyScenario : MonoBehaviour
     void Start()
     {
         remyController = gameObject.GetComponent<RemyController>();
-        Scenario();
+        StartCoroutine(Scenario());
     }
 
-    void Scenario()
+    private IEnumerator Scenario()
     {
         if (remyController != null)
         {
             //Walk to door
             remyController.State = RemyState.GoWalking; //Start walking animation.
-            StartCoroutine(WaitUntilWalking());
+
+            yield return StartCoroutine(WaitUntilWalking());
 
             remyController.Position = RemyPosition.DoorEnter;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            StartCoroutine(WaitUntilIdle());
-
+            yield return StartCoroutine(WaitUntilIdle());
 
             remyController.State = RemyState.GoWalking; //Start walkign animation.
 
-            StartCoroutine(WaitUntilWalking());
+            yield return StartCoroutine(WaitUntilWalking());
+
             remyController.Position = RemyPosition.Chair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            StartCoroutine(WaitUntilIdle());
+            yield return StartCoroutine(WaitUntilIdle());
 
+            remyController.State = RemyState.GoSitting; // animation sit wil start
 
         }
     }

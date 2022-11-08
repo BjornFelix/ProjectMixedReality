@@ -142,7 +142,7 @@ public class RemyController : MonoBehaviour
         {
             animator.ResetTrigger("Idle");
             //Turn to class
-
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             //Sit down
             animator.SetTrigger("Sit");
         }

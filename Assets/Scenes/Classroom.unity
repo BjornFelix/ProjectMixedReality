@@ -2329,7 +2329,7 @@ MonoBehaviour:
   blackboard: {fileID: 598956525}
   chair: {fileID: 656872032}
   doorEnter: {fileID: 251866193}
-  State: 1
+  State: 11
   Position: 0
 --- !u!1 &1776455353
 GameObject:
