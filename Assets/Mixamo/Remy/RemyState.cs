@@ -9,6 +9,7 @@ public enum RemyState {
     GoStand,Standing,
     GoWaving,Waving,
     GoPointing,Pointing,
+    GoTalking,Talking
 
     
 }

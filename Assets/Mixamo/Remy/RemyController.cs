@@ -86,11 +86,19 @@ public class RemyController : MonoBehaviour
             case RemyState.GoIdle:
                 Idle();
                 break;
+            case RemyState.GoTalking:
+                Talk();
+                break;
         }
     }
 
     #region StateMethods
-
+    private void Talk()
+    {
+        ResetAllTriggers();
+        animator.SetTrigger("Talk");
+        State = RemyState.Talking;
+    }
     private void Walk()
     {
         ResetAllTriggers();
@@ -116,12 +124,11 @@ public class RemyController : MonoBehaviour
     }
     private void Wave()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            animator.ResetTrigger("Up");
+      
+            ResetAllTriggers();
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             animator.SetTrigger("Wave");
-        }
+
         State = RemyState.Waving;
     }
 
