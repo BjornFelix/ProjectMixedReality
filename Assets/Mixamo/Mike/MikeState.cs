@@ -11,6 +11,7 @@ public enum MikeState
     GoWaving,Waving,
     GoPoint,Pointing,
     GoAskQuestion, AskingQuestion,
-    GoPickUp, PickingUp
+    GoPickUp, PickingUp,
+    goGive,Giving
 
 }

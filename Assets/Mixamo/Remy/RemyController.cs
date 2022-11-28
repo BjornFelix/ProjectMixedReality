@@ -17,6 +17,9 @@ public class RemyController : MonoBehaviour
 
     //Target to enter class
     public Transform doorEnter;
+    public Transform doorIn;
+
+    public Transform nextToChair;
 
     //Temp code tibe
     public RemyState State = RemyState.Idle;
@@ -32,7 +35,7 @@ public class RemyController : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(State);
+        Debug.Log("Remt: " + State);
         switch (State)
         {
             case RemyState.GoSitting:
@@ -64,6 +67,20 @@ public class RemyController : MonoBehaviour
                         break;
                     case RemyPosition.DoorEnter:
                         if (GoTo(doorEnter))
+                        {
+                            //Change state to Idle (in scenario check if state idl e gowave or gopoint) 
+                            this.State = RemyState.GoIdle;
+                        }
+                        break;
+                    case RemyPosition.NextToChair:
+                        if (GoTo(nextToChair))
+                        {
+                            //Change state to Idle (in scenario check if state idle gowave or gopoint) 
+                            this.State = RemyState.GoIdle;
+                        }
+                        break;
+                    case RemyPosition.DoorIn:
+                        if (GoTo(doorIn))
                         {
                             //Change state to Idle (in scenario check if state idle gowave or gopoint) 
                             this.State = RemyState.GoIdle;
@@ -97,6 +114,7 @@ public class RemyController : MonoBehaviour
     {
         ResetAllTriggers();
         animator.SetTrigger("Talk");
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         State = RemyState.Talking;
     }
     private void Walk()
@@ -124,35 +142,34 @@ public class RemyController : MonoBehaviour
     }
     private void Wave()
     {
-      
-            ResetAllTriggers();
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-            animator.SetTrigger("Wave");
+
+        ResetAllTriggers();
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        animator.SetTrigger("Wave");
 
         State = RemyState.Waving;
     }
 
     private void Stand()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Sitting Idle"))
-        {
-            animator.ResetTrigger("Sit");
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-            animator.SetTrigger("Up");
-        }
+
+        ResetAllTriggers();
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        animator.SetTrigger("Up");
+
         State = RemyState.Standing;
 
     }
     private void Sit()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            animator.ResetTrigger("Idle");
-            //Turn to class
-            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        // if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+
+        ResetAllTriggers();
+        //Turn to class
+        transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             //Sit down
             animator.SetTrigger("Sit");
-        }
+        
         //Change state to sitting
         this.State = RemyState.Sitting;
 
@@ -172,11 +189,17 @@ public class RemyController : MonoBehaviour
         }
     }
 
-
+    private void IsIdle()
+    {
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Breathing Idle")
+        {
+            State = RemyState.GoIdle;
+        }
+    }
 
     private bool GoTo(Transform target)
     {
-        if (Vector3.Distance(transform.position, target.position) > 0.2)
+        if (Vector3.Distance(transform.position, target.position) > 0.01)
         {
             transform.LookAt(target.position);
             Vector3 direction = target.position - transform.position;

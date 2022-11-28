@@ -17,11 +17,13 @@ public class JayController : MonoBehaviour
     //Target to sit
     public Transform chair;
     public Transform row;
+    public Transform backpack;
+    public Transform nextToChair;
 
     //Target to enter class
     public Transform doorEnter;
 
-    //Temp code tibe
+    //var to control state and position
     public JayState State = JayState.Idle;
     public JayPosition Position = JayPosition.Start;
 
@@ -41,7 +43,8 @@ public class JayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  Debug.Log(State);
+       // IsIdle();
+        Debug.Log("Jay: " + State);
         switch (State)
         {
             case JayState.GoSitting:
@@ -85,6 +88,20 @@ public class JayController : MonoBehaviour
                             this.State = JayState.GoIdle;
                         }
                         break;
+                    case JayPosition.BackPack:
+                        if (GoTo(backpack))
+                        {
+
+                            this.State = JayState.GoIdle;
+                        }
+                        break;
+                    case JayPosition.NextToChair:
+                        if (GoTo(nextToChair))
+                        {
+
+                            this.State = JayState.GoIdle;
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -123,7 +140,6 @@ public class JayController : MonoBehaviour
     private void PickUp()
     {
         ResetAllTriggers();
-        transform.rotation = Quaternion.Euler(0f,90f, 0f);
         animator.SetTrigger("PickUp");
         State = JayState.PickingUp;
     }
@@ -180,12 +196,8 @@ public class JayController : MonoBehaviour
     private void Sit()
     {
         ResetAllTriggers();
-        //Turn to class
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        //Sit down
         animator.SetTrigger("Sit");
-
-        //Change state to sitting
         this.State = JayState.Sitting;
 
     }
@@ -204,11 +216,17 @@ public class JayController : MonoBehaviour
         }
     }
 
-
+    private void IsIdle()
+    {
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Breathing Idle")
+        {
+            State = JayState.GoIdle;
+        }
+    }
 
     private bool GoTo(Transform target)
     {
-        if (Vector3.Distance(transform.position, target.position) > 0.2)
+        if (Vector3.Distance(transform.position, target.position) > 0.01)
         {
             transform.LookAt(target.position);
             Vector3 direction = target.position - transform.position;

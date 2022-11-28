@@ -10,5 +10,7 @@ public enum MeganPosition
     Blackboard,
     DoorEnter,
     Row,
+    BackPack,
+    NextToChair
 }
 

@@ -15,11 +15,13 @@ public class MeganController : MonoBehaviour
     //Target to sit
     public Transform chair;
     public Transform row;
+    public Transform backPack;
+    public Transform nextToChair;
 
     //Target to enter class
     public Transform doorEnter;
 
-    //Temp code tibe
+    //var to control state and position
     public MeganState State = MeganState.Idle;
     public MeganPosition Position = MeganPosition.Start;
 
@@ -39,7 +41,8 @@ public class MeganController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log(State);
+        //IsIdle();
+        Debug.Log("Megan: " + State);
         switch (State)
         {
             case MeganState.GoSitting:
@@ -80,6 +83,20 @@ public class MeganController : MonoBehaviour
                     case MeganPosition.Row:
                         if (GoTo(row))
                         {
+                            this.State = MeganState.GoIdle;
+                        }
+                        break;
+                    case MeganPosition.BackPack:
+                        if (GoTo(backPack))
+                        {
+
+                            this.State = MeganState.GoIdle;
+                        }
+                        break;
+                    case MeganPosition.NextToChair:
+                        if (GoTo(nextToChair))
+                        {
+
                             this.State = MeganState.GoIdle;
                         }
                         break;
@@ -180,8 +197,6 @@ public class MeganController : MonoBehaviour
     private void PickUp()
     {
         ResetAllTriggers();
-        transform.rotation = Quaternion.Euler(0f, -90f, 0f);
-
         animator.SetTrigger("PickUp");
         State = MeganState.PickingUp;
     }
@@ -201,10 +216,16 @@ public class MeganController : MonoBehaviour
     }
 
 
-
+    private void IsIdle()
+    {
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Breathing Idle")
+        {
+            State = MeganState.GoIdle;
+        }
+    }
     private bool GoTo(Transform target)
     {
-        if (Vector3.Distance(transform.position, target.position) > 0.2)
+        if (Vector3.Distance(transform.position, target.position) > 0.01)
         {
             transform.LookAt(target.position);
             Vector3 direction = target.position - transform.position;

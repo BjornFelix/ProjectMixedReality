@@ -32,45 +32,60 @@ public class Scenario : MonoBehaviour
         {
             #region RemyEnterClass
             // Walk to door
-            //remyController.State = RemyState.GoWalking; //Start walking animation.
+            remyController.State = RemyState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
 
-            //remyController.Position = RemyPosition.DoorEnter;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            remyController.Position = RemyPosition.DoorEnter;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
 
-            //remyController.State = RemyState.GoWalking; //Start walkign animation.
+            remyController.State = RemyState.GoWalking; //Start walkign animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
 
-            //remyController.Position = RemyPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            remyController.Position = RemyPosition.DoorIn;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
 
-            //remyController.State = RemyState.GoWaving;
+            remyController.State = RemyState.GoWalking; //Start walkign animation.
 
-            //yield return StartCoroutine(WaitUntilWaving(Characters.Remy));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
 
-            //yield return new WaitForSeconds(6);
+            remyController.Position = RemyPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //remyController.State = RemyState.GoIdle;
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+            remyController.State = RemyState.GoWaving;
 
-            //yield return new WaitForSeconds(2);
+            yield return StartCoroutine(WaitUntilWaving(Characters.Remy));
 
-            //remyController.State = RemyState.GoWalking; //Start walking animation.
+            yield return new WaitForSeconds(6);
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
+            remyController.State = RemyState.GoIdle;
 
-            //remyController.Position = RemyPosition.Chair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+            yield return new WaitForSeconds(2);
 
-            //remyController.State = RemyState.GoSitting; // animation sit wil start
+            remyController.State = RemyState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilSitting(Characters.Remy));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
+
+            remyController.Position = RemyPosition.NextToChair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+
+            remyController.State = RemyState.GoWalking; //Start walking animation.
+
+            yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
+
+            remyController.Position = RemyPosition.Chair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+            remyController.State = RemyState.GoSitting; // animation sit wil start
+
+            yield return StartCoroutine(WaitUntilSitting(Characters.Remy));
 
             #endregion
 
@@ -124,123 +139,122 @@ public class Scenario : MonoBehaviour
 
             #region MeganEnterClass
             //Walk to door
-            //meganController.State = MeganState.GoWalking; //Start walking animation.
+            meganController.State = MeganState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
 
-            //meganController.Position = MeganPosition.DoorEnter;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
+            meganController.Position = MeganPosition.DoorEnter;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
 
-            //meganController.State = MeganState.GoWalking; //Start walkign animation.
+            meganController.State = MeganState.GoWalking; //Start walkign animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
 
-            //meganController.Position = MeganPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            meganController.Position = MeganPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
 
-            //meganController.State = MeganState.GoWaving;
+            meganController.State = MeganState.GoWaving;
 
-            //yield return StartCoroutine(WaitUntilWaving(Characters.Megan));
+            yield return StartCoroutine(WaitUntilWaving(Characters.Megan));
 
-            //yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3);
 
-            //meganController.State = MeganState.GoIdle;
+            meganController.State = MeganState.GoIdle;
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
 
-            //meganController.State = MeganState.GoWalking; //Start walking animation.
+            meganController.State = MeganState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
 
-            //meganController.Position = MeganPosition.Row;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            meganController.Position = MeganPosition.Row;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
-            //meganController.State = MeganState.GoWalking; //Start walking animation.
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+            meganController.State = MeganState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
 
-            //meganController.Position = MeganPosition.Chair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+            meganController.Position = MeganPosition.Chair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
 
-            //meganController.State = MeganState.GoSitting; // animation sit wil start
+            meganController.State = MeganState.GoSitting; // animation sit wil start
 
-            //yield return StartCoroutine(WaitUntilSitting(Characters.Megan));
+            yield return StartCoroutine(WaitUntilSitting(Characters.Megan));
 
             #endregion
 
             #region JayEnterClass
             ////Walk to door
-            //jayController.State = JayState.GoWalking; //Start walking animation.
+            jayController.State = JayState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
 
-            //jayController.Position = JayPosition.DoorEnter;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
+            jayController.Position = JayPosition.DoorEnter;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
 
-            //jayController.State = JayState.GoWalking; //Start walkign animation.
+            jayController.State = JayState.GoWalking; //Start walkign animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
 
-            //jayController.Position = JayPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            jayController.Position = JayPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
 
-            //jayController.State = JayState.GoWaving;
+            jayController.State = JayState.GoWaving;
 
-            //yield return StartCoroutine(WaitUntilWaving(Characters.Jay));
+            yield return StartCoroutine(WaitUntilWaving(Characters.Jay));
 
-            //yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3);
 
-            //jayController.State = JayState.GoIdle;
+            jayController.State = JayState.GoIdle;
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
 
-            //jayController.State = JayState.GoWalking; //Start walking animation.
+            jayController.State = JayState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
 
-            //jayController.Position = JayPosition.Row;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            jayController.Position = JayPosition.Row;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
-            //jayController.State = JayState.GoWalking; //Start walking animation.
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+            jayController.State = JayState.GoWalking; //Start walking animation.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
+            yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
 
-            //jayController.Position = JayPosition.Chair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+            jayController.Position = JayPosition.Chair;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
 
-            //jayController.State = JayState.GoSitting; // animation sit wil start
+            jayController.State = JayState.GoSitting; // animation sit wil start
 
-            //yield return StartCoroutine(WaitUntilSitting(Characters.Jay));
+            yield return StartCoroutine(WaitUntilSitting(Characters.Jay));
 
             #endregion
 
 
             #region GetBook
             //check if everyone is sitting
-            //yield return StartCoroutine(WaitUntilSitting(Characters.Jay));
-            //yield return StartCoroutine(WaitUntilSitting(Characters.Megan));
+            yield return StartCoroutine(WaitUntilSitting(Characters.Jay));
+            yield return StartCoroutine(WaitUntilSitting(Characters.Megan));
             yield return StartCoroutine(WaitUntilSitting(Characters.Mike));
-            //yield return StartCoroutine(WaitUntilSitting(Characters.Remy));
+            yield return StartCoroutine(WaitUntilSitting(Characters.Remy));
             yield return new WaitForSeconds(6);
-            //remyController.State = RemyState.GoStand;
+            remyController.State = RemyState.GoStand;
 
+            yield return StartCoroutine(WaitUntilStanding(Characters.Remy));
 
-            //yield return StartCoroutine(WaitUntilStanding(Characters.Remy));
+            remyController.State = RemyState.GoWalking; //Start walking animation.
 
-            //remyController.State = RemyState.GoWalking; //Start walking animation.
+            yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
+            remyController.Position = RemyPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
 
-            //yield return StartCoroutine(WaitUntilWalking(Characters.Remy));
-            //remyController.Position = RemyPosition.Blackboard;  //Tell Remy where he has to walk to, state will be set to Idle when target is reached.
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
 
-            //yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+            remyController.State = RemyState.GoTalking;
 
-            //remyController.State = RemyState.GoTalking;
-
-            //yield return StartCoroutine(WaitUntilTalking(Characters.Remy));
+            yield return StartCoroutine(WaitUntilTalking(Characters.Remy));
 
 
 
@@ -249,10 +263,12 @@ public class Scenario : MonoBehaviour
             meganController.State = MeganState.GoStand;
             jayController.State = JayState.GoStand;
 
-            //yield return StartCoroutine(WaitUntilStanding(Characters.Jay));
-            //yield return StartCoroutine(WaitUntilStanding(Characters.Megan));
             yield return StartCoroutine(WaitUntilStanding(Characters.Mike));
+            yield return StartCoroutine(WaitUntilStanding(Characters.Jay));
+            yield return StartCoroutine(WaitUntilStanding(Characters.Megan));
+
             yield return new WaitForSeconds(3);
+
             mikeController.State = MikeState.GoWalking; //Start walking animation.
 
             yield return StartCoroutine(WaitUntilWalking(Characters.Mike));
@@ -260,8 +276,6 @@ public class Scenario : MonoBehaviour
             mikeController.Position = MikePosition.NextToChair;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
 
             yield return StartCoroutine(WaitUntilIdle(Characters.Mike));
-
-
 
             mikeController.State = MikeState.GoWalking; //Start walking animation.
 
@@ -271,15 +285,141 @@ public class Scenario : MonoBehaviour
 
             yield return StartCoroutine(WaitUntilIdle(Characters.Mike));
 
+
+            yield return new WaitForSeconds(3);
+            meganController.State = MeganState.GoWalking; //Start walking animation.
+
+            yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
+
+            meganController.Position = MeganPosition.NextToChair;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+
+            meganController.State = MeganState.GoWalking; //Start walking animation.
+
+            yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
+
+            meganController.Position = MeganPosition.BackPack;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+
+
+            yield return new WaitForSeconds(3);
+            jayController.State = JayState.GoWalking; //Start walking animation.
+
+            yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
+
+            jayController.Position = JayPosition.NextToChair;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+
+            jayController.State = JayState.GoWalking; //Start walking animation.
+
+            yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
+
+            jayController.Position = JayPosition.BackPack;  //Tell Mike where he has to walk to, state will be set to Idle when target is reached.
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+
             yield return new WaitForSeconds(3);
 
 
             mikeController.State = MikeState.GoPickUp;
-            //meganController.State = MeganState.GoPickUp;
-            //jayController.State = JayState.GoPickUp;
+            meganController.State = MeganState.GoPickUp;
+            jayController.State = JayState.GoPickUp;
+
+            yield return StartCoroutine(WaitUntilPickinUp(Characters.Mike));
+            yield return StartCoroutine(WaitUntilPickinUp(Characters.Jay));
+            yield return StartCoroutine(WaitUntilPickinUp(Characters.Megan));
+
+
+
 
             #endregion
 
+
+            #region BackToSitting
+            yield return new WaitForSeconds(9);
+            mikeController.State = MikeState.GoIdle;
+            jayController.State = JayState.GoIdle;
+            meganController.State = MeganState.GoIdle;
+            remyController.State = RemyState.GoIdle;
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Mike));
+            mikeController.State = MikeState.GoWalking; //Start walking animation.
+            yield return StartCoroutine(WaitUntilWalking(Characters.Mike));
+            mikeController.Position = MikePosition.Chair;
+
+
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+            jayController.State = JayState.GoWalking; //Start walking animation.
+            yield return StartCoroutine(WaitUntilWalking(Characters.Jay));
+
+            jayController.Position = JayPosition.Chair;
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+            meganController.State = MeganState.GoWalking; //Start walking animation. 
+            yield return StartCoroutine(WaitUntilWalking(Characters.Megan));
+            meganController.Position = MeganPosition.Chair;
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Mike));
+            mikeController.State = MikeState.GoSitting; // animation sit wil start
+            yield return StartCoroutine(WaitUntilIdle(Characters.Jay));
+            jayController.State = JayState.GoSitting; // animation sit wil start  
+            yield return StartCoroutine(WaitUntilIdle(Characters.Megan));
+            meganController.State = MeganState.GoSitting; // animation sit wil start
+
+
+            yield return StartCoroutine(WaitUntilSitting(Characters.Mike));
+            yield return StartCoroutine(WaitUntilSitting(Characters.Jay));
+            yield return StartCoroutine(WaitUntilSitting(Characters.Megan));
+
+
+
+            #endregion
+
+
+
+
+
+
+
+
+            #region GiveBook
+            yield return StartCoroutine(WaitUntilIdle(Characters.Remy));
+
+            remyController.State = RemyState.GoPointing;
+
+            yield return StartCoroutine(WaitUntilPointing(Characters.Remy));
+
+            yield return new WaitForSeconds(3);
+
+            mikeController.State = MikeState.GoStand;
+
+            yield return StartCoroutine(WaitUntilStanding(Characters.Mike));
+
+            mikeController.State = MikeState.GoIdle;
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Mike));
+
+            mikeController.State = MikeState.GoWalking;
+
+            yield return StartCoroutine(WaitUntilWalking(Characters.Mike));
+
+            mikeController.Position = MikePosition.NextToChair;
+
+            mikeController.GetBookFromTable();
+
+            yield return StartCoroutine(WaitUntilIdle(Characters.Mike));
+
+            mikeController.State = MikeState.goGive;
+
+
+
+
+
+            #endregion
 
 
 
@@ -300,8 +440,28 @@ public class Scenario : MonoBehaviour
 
 
 
-
     #region WaitFotStateMethods
+
+
+    IEnumerator WaitUntilPickinUp(Characters character)
+    {
+
+        if (character == Characters.Mike)
+        {
+            yield return new WaitUntil(() => mikeController.State == MikeState.PickingUp);
+        }
+        else if (character == Characters.Megan)
+        {
+            yield return new WaitUntil(() => meganController.State == MeganState.PickingUp);
+
+        }
+        else if (character == Characters.Jay)
+        {
+            yield return new WaitUntil(() => jayController.State == JayState.PickingUp);
+        }
+    }
+
+
     IEnumerator WaitUntilWalking(Characters character)
     {
         if (character == Characters.Remy)
@@ -329,6 +489,15 @@ public class Scenario : MonoBehaviour
         if (character == Characters.Remy)
         {
             yield return new WaitUntil(() => remyController.State == RemyState.Talking);
+        }
+
+    }
+
+    IEnumerator WaitUntilPointing(Characters character)
+    {
+        if (character == Characters.Remy)
+        {
+            yield return new WaitUntil(() => remyController.State == RemyState.Pointing);
         }
 
     }
@@ -388,7 +557,6 @@ public class Scenario : MonoBehaviour
         else if (character == Characters.Megan)
         {
             yield return new WaitUntil(() => meganController.State == MeganState.Idle);
-
         }
         else if (character == Characters.Jay)
         {

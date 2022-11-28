@@ -10,21 +10,22 @@ public class MikeController : MonoBehaviour
 
     //var for animations
     Animator animator;
+    AudioSource audioData;
 
     //Target to stand in front of class
     public Transform blackboard;
-
+    GetBook getBook;
     //Target to sit
     public Transform chair;
     public Transform row;
-    public Transform backpack;
+    public Transform backPack;
     public Transform nextToChair;
 
 
     //Target to enter class
     public Transform doorEnter;
 
-    //Temp code tibe
+    //var to control state and position
     public MikeState State = MikeState.Idle;
     public MikePosition Position = MikePosition.Start;
 
@@ -32,7 +33,10 @@ public class MikeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        getBook = GetComponent<GetBook>();
+
         animator = gameObject.GetComponent<Animator>();
+        audioData = GetComponent<AudioSource>();
         //if (animator != null)
         //{
 
@@ -44,7 +48,9 @@ public class MikeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log(State);
+        PlaySounds();
+        //IsIdle();
+        Debug.Log("Mike: " + State);
         switch (State)
         {
             case MikeState.GoSitting:
@@ -89,7 +95,7 @@ public class MikeController : MonoBehaviour
                         }
                         break;
                     case MikePosition.BackPack:
-                        if (GoTo(backpack))
+                        if (GoTo(backPack))
                         {
 
                             this.State = MikeState.GoIdle;
@@ -113,9 +119,9 @@ public class MikeController : MonoBehaviour
             case MikeState.GoWaving:
                 Wave();
                 break;
-            //case MikeState.GoPoint:
-            //    Point();
-            //    break;
+            case MikeState.GoPoint:
+                Point();
+                break;
             case MikeState.GoAskQuestion:
                 AskQuestion();
                 break;
@@ -125,6 +131,9 @@ public class MikeController : MonoBehaviour
             case MikeState.GoPickUp:
                 PickUp();
                 break;
+            case MikeState.goGive:
+                Give();
+                break;
         }
 
 
@@ -133,7 +142,15 @@ public class MikeController : MonoBehaviour
 
 
 
+
     #region StateMethods
+    private void Give()
+    {
+        ResetAllTriggers();
+        animator.SetTrigger("Give");
+        State = MikeState.Giving;
+    }
+
     private void PickUp()
     {
         ResetAllTriggers();
@@ -193,12 +210,8 @@ public class MikeController : MonoBehaviour
     private void Sit()
     {
         ResetAllTriggers();
-        //Turn to class
         transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        //Sit down
         animator.SetTrigger("Sit");
-
-        //Change state to sitting
         this.State = MikeState.Sitting;
 
     }
@@ -206,6 +219,10 @@ public class MikeController : MonoBehaviour
 
     #region HelperMethods
 
+    public void GetBookFromTable()
+    {
+        getBook.getBook();
+    }
     private void ResetAllTriggers()
     {
         foreach (var param in animator.parameters)
@@ -217,11 +234,32 @@ public class MikeController : MonoBehaviour
         }
     }
 
+    private void IsIdle()
+    {
+        if (animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Breathing Idle" && State != MikeState.Idle && State != MikeState.GoIdle && State == MikeState.PickingUp)
+        {
+            State = MikeState.GoIdle;
+        }
+    }
+
+    private void PlaySounds()
+    {
+        if (State == MikeState.Walking)
+        {
+
+            audioData.Play(0);
+        }
+        else
+        {
+            audioData.Stop();
+
+        }
+    }
 
 
     private bool GoTo(Transform target)
     {
-        if (Vector3.Distance(transform.position, target.position) > 0.2)
+        if (Vector3.Distance(transform.position, target.position) > 0.05)
         {
             transform.LookAt(target.position);
             Vector3 direction = target.position - transform.position;

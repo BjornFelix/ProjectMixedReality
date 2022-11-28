@@ -9,4 +9,6 @@ public enum JayPosition
     Blackboard,
     DoorEnter,
     Row,
+    NextToChair,
+    BackPack
 }

@@ -14,6 +14,7 @@ public class DropBook : MonoBehaviour
             someTransform.parent = this.transform;
             someTransform.localPosition = Vector3.zero;
             someTransform.localRotation = Quaternion.Euler(0f, 125f, 90f);
+            someTransform.localScale = new Vector3(0.4615385f, 1f, 1f);
         }
     }
 }

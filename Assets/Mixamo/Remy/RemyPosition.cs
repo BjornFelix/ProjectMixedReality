@@ -11,7 +11,9 @@ public enum RemyPosition
     Start,
     Chair,
     Blackboard,
-    DoorEnter
+    DoorEnter,
+    DoorIn,
+    NextToChair
 
 }
 
